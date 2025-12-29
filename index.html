@@ -135,8 +135,22 @@
         document.querySelector('.result-container').style.display = 'block';
       }
 
-      function handleNoClick() {
-        alert("Oh no! 😢 But that's okay.");
+      <script>
+  let noClickCount = 0;
+
+  function handleYesClick() {
+    document.querySelector('.question-container').style.display = 'none';
+    document.querySelector('.result-container').style.display = 'block';
+  }
+
+  function handleNoClick() {
+    noClickCount++;
+
+    // Optional: change text every time
+    const noBtn = document.querySelector('.js-no-btn');
+    noBtn.innerText = `No (${noClickCount})`;
+  }
+</script>
       }
     </script>
   </body>
