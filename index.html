@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Do You Love Me?</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
@@ -17,9 +16,15 @@
       height: 100vh;
       margin: 0;
       background-color: #f9e3e3;
+      overflow: hidden;
     }
 
-    .container { text-align: center; }
+    .container {
+      text-align: center;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
 
     .question {
       font-size: 2.5em;
@@ -33,6 +38,10 @@
       margin-bottom: 15px;
     }
 
+    .button-container {
+      margin-top: 20px;
+    }
+
     .btn {
       font-size: 1.5em;
       padding: 10px 25px;
@@ -42,41 +51,78 @@
       cursor: pointer;
     }
 
-    .yes-btn { background: #4caf50; color: white; }
-    .no-btn { background: #f44336; color: white; }
+    .yes-btn {
+      background-color: #4caf50;
+      color: white;
+    }
 
-    .result-container { display: none; }
+    .no-btn {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .result-container {
+      display: none;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
 
+  <!-- QUESTION SCREEN -->
   <div class="question-container container">
-    <!-- LOCAL GIF -->
-    <img class="gif" src="love.gif" alt="Do you love me">
+
+    <img
+      class="gif"
+        <img class="gif" src="love.gif" alt="Do you love me">
+      alt="Do you love me">
 
     <h2 class="question">Do you love me?</h2>
 
-    <button class="yes-btn btn" onclick="handleYes()">Yes</button>
-    <button class="no-btn btn" onclick="handleNo()">No</button>
+    <div class="button-container">
+      <button class="yes-btn btn" onclick="handleYesClick()">Yes</button>
+      <button class="no-btn btn" id="noBtn" onclick="handleNoClick()">No</button>
+    </div>
+
   </div>
 
+  <!-- RESULT SCREEN -->
   <div class="result-container container">
+    <img
+      class="gif"
+      src="https://media.giphy.com/media/9d3LQ6TdV2Flo8ODTU/giphy.gif"
+      alt="Love GIF">
+
     <h2>I knew it 😍</h2>
     <h3>I love u too 🥰😘</h3>
   </div>
 
   <script>
-    let noCount = 0;
+    let noInitialized = false;
 
-    function handleYes() {
+    function handleYesClick() {
       document.querySelector('.question-container').style.display = 'none';
       document.querySelector('.result-container').style.display = 'block';
     }
 
-    function handleNo() {
-      noCount++;
-      document.querySelector('.no-btn').innerText = `No (${noCount})`;
+    function handleNoClick() {
+      const noBtn = document.getElementById('noBtn');
+
+      // FIRST CLICK: switch to absolute positioning
+      if (!noInitialized) {
+        noInitialized = true;
+        noBtn.style.position = 'absolute';
+      }
+
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noBtn.style.left = randomX + 'px';
+      noBtn.style.top = randomY + 'px';
     }
   </script>
 
