@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+  <title>Do You Love Me?</title>
 
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-<title>Do You Love Me?</title>
+
   <style>
     body {
       font-family: 'Quicksand', sans-serif;
@@ -26,24 +27,30 @@
     .question {
       font-size: 2.5em;
       color: #d32f2f;
+      margin-bottom: 20px;
     }
 
     .btn {
       font-size: 1.5em;
-      padding: 10px 20px;
+      padding: 10px 25px;
       margin: 10px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
     }
 
     .yes-btn {
-      background: #4caf50;
+      background-color: #4caf50;
       color: white;
     }
 
     .no-btn {
-      background: #f44336;
+      background-color: #f44336;
       color: white;
     }
 
@@ -51,29 +58,34 @@
       display: none;
     }
 
-    .gif-result {
-      max-width: 300px;
-      border-radius: 10px;
-      margin-top: 20px;
+    .gif {
+      max-width: 280px;
+      border-radius: 12px;
+      margin-bottom: 20px;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- QUESTION -->
+  <!-- QUESTION SCREEN -->
   <div class="question-container container">
+    <img
+      class="gif"
+      src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+      alt="Do you love me GIF">
+
     <h2 class="question">Do you love me?</h2>
 
     <button class="yes-btn btn" onclick="handleYesClick()">Yes</button>
     <button class="no-btn btn" onclick="handleNoClick()">No</button>
   </div>
 
-  <!-- RESULT -->
+  <!-- RESULT SCREEN -->
   <div class="result-container container">
     <img
-      class="gif-result"
-      src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTVrcGFjZHY2cWxoZTQ4NHpsZXpydmptdWRxb2swbGcyZWZibXE3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9d3LQ6TdV2Flo8ODTU/giphy.gif"
+      class="gif"
+      src="https://media.giphy.com/media/9d3LQ6TdV2Flo8ODTU/giphy.gif"
       alt="Love GIF">
 
     <h2>I knew it 😍</h2>
